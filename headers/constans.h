@@ -9,9 +9,14 @@
 #define CONSTANS_H_
 
 
-const char* IDENTIFICATOR = "identyfikator";
-const char* OPERATOR      = "operator";
-const char* NUMBER        = "liczba";
+const char* IDENTIFICATOR 	= "identyfikator";
+const char* OPERATOR      	= "operator";
+const char* NUMBER        	= "liczba";
+
+const char* TAG_START	  	= "poczatek tagu";
+const char* TAG_STOP	  	= "koniec tagu";
+const char* PARAMETER	  	= "parametr";
+const char* PARAMETER_VALUE = "wartosc parametru";
 
 
 #endif /* CONSTANS_H_ */

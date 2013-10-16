@@ -18,10 +18,10 @@ int TRANSITION_ARRAY[NUMBER_OF_STATES][ASCII_LITERAL_MAX];	// extern!
 
 void prepareTransitionArray() {
 
-	int state = NAN;
+	int state   = NAN;
 	int charact = NAN;
 
-	char character = '\0';
+	char character = NULL_CHARACTER;
 
 
 	/* --- "Clearing" the array --- */
