@@ -9,7 +9,12 @@
 #include "transitions.h"
 
 
-int TRANSITION_ARRAY[NUMBER_OF_STATES][ASCII_LITERAL_MAX];
+/* ----- Global variables ----- */
+
+int TRANSITION_ARRAY[NUMBER_OF_STATES][ASCII_LITERAL_MAX];	// extern!
+
+
+/* ----- Functions ----- */
 
 void prepareTransitionArray() {
 
