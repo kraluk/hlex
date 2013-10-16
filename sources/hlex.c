@@ -10,6 +10,8 @@
 #include <string.h>
 
 #include "hlex.h"
+#include "constans.h"
+#include "enums.h"
 
 
 /* ----- Global Variables ----- */
