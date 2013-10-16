@@ -18,7 +18,7 @@
 
 /* ----- Global Variables ----- */
 
-char input[INPUT_MAX] = "<html><body></body></html>";
+char input[INPUT_MAX] = "<html><body>d.8</body></html>";
 char buffer[BUFFER_MAX];
 char txt[TXT_MAX];
 
