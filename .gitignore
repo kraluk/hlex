@@ -20,3 +20,4 @@
 # Eclipse
 *.project
 *.cproject
+/Debug
