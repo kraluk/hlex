@@ -18,8 +18,6 @@
 
 /* ----- Global Variables ----- */
 
-int TRANSITION_ARRAY[NUMBER_OF_STATES][ASCII_LITERAL_MAX];
-
 char input[INPUT_MAX] = "<html><body></body></html>";
 char buffer[BUFFER_MAX];
 char txt[TXT_MAX];
@@ -30,7 +28,6 @@ int position = START_POSITION;
 /* ----- Function Prototypes ----- */
 
 int getCharacter();
-
 void addLexem(const char* type, char* value);
 
 
@@ -77,7 +74,7 @@ int main(int argc, char** argv) {
 		}
 	}
 
-	printf("\n");
+	printf("\n\nKoniec...");
 	//getchar();
 	return 0;
 }

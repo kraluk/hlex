@@ -9,6 +9,11 @@
 #define TRANSITIONS_H_
 
 
+/* ----- Externs ----- */
+
+extern int TRANSITION_ARRAY[NUMBER_OF_STATES][ASCII_LITERAL_MAX];
+
+
 /* ----- Functions ----- */
 
 void prepareTransitionArray();

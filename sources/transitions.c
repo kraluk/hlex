@@ -8,10 +8,13 @@
 #include "hlex.h"
 #include "transitions.h"
 
+
+int TRANSITION_ARRAY[NUMBER_OF_STATES][ASCII_LITERAL_MAX];
+
 void prepareTransitionArray() {
 
-	int state;
-	int charact;
+	int state = NAN;
+	int charact = NAN;
 
 	char character = '\0';
 
