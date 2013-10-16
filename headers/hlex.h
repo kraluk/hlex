@@ -22,5 +22,7 @@
 #define ERROR             -9999
 #define NAN               -1
 
+#define NULL_CHARACTER	  '\0'
+
 
 #endif /* HLEX_H_ */
