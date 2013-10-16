@@ -51,61 +51,11 @@ void prepareTransitionArray() {
 	TRANSITION_ARRAY[1]['/'] = 10;
 
 
-	/* --- S_10 --- */
-
-	for (character = 'a'; character <= 'z'; character++) {
-		TRANSITION_ARRAY[10][(int) character] = 11;
-	}
-
-	for (character = 'A'; character <= 'Z'; character++) {
-		TRANSITION_ARRAY[10][(int) character] = 11;
-	}
-
-
-	/* --- S_11 --- */
-
-	for (character = 'a'; character <= 'z'; character++) {
-		TRANSITION_ARRAY[11][(int) character] = 11;
-	}
-
-	for (character = 'A'; character <= 'Z'; character++) {
-		TRANSITION_ARRAY[11][(int) character] = 11;
-	}
-
-	for (character = '0'; character <= '9'; character++) {
-		TRANSITION_ARRAY[11][(int) character] = 11;
-	}
-
-	TRANSITION_ARRAY[11]['>'] = 9;
-
-
-	/* --- S_9 --- */
-
-	for (character = 'a'; character <= 'z'; character++) {
-		TRANSITION_ARRAY[9][(int) character] = 9;
-	}
-
-	for (character = 'A'; character <= 'Z'; character++) {
-		TRANSITION_ARRAY[9][(int) character] = 9;
-	}
-
-	for (character = '0'; character <= '9'; character++) {
-		TRANSITION_ARRAY[9][(int) character] = 9;
-	}
-
-	TRANSITION_ARRAY[9]['<'] = 9;
-
-
 	/* --- S_2 --- */
 
 	TRANSITION_ARRAY[2]['>'] = 9;
 	TRANSITION_ARRAY[2]['/'] = 8;
 	TRANSITION_ARRAY[2][' '] = 3;
-
-
-	/* --- S_8 --- */
-
-	TRANSITION_ARRAY[8]['>'] = 9;
 
 
 	/* --- S_3 --- */
@@ -159,4 +109,54 @@ void prepareTransitionArray() {
 	/* --- S_7 --- */
 
 	TRANSITION_ARRAY[7]['"'] = 2;
+
+
+	/* --- S_8 --- */
+
+	TRANSITION_ARRAY[8]['>'] = 9;
+
+
+	/* --- S_9 --- */
+
+	for (character = 'a'; character <= 'z'; character++) {
+		TRANSITION_ARRAY[9][(int) character] = 9;
+	}
+
+	for (character = 'A'; character <= 'Z'; character++) {
+		TRANSITION_ARRAY[9][(int) character] = 9;
+	}
+
+	for (character = '0'; character <= '9'; character++) {
+		TRANSITION_ARRAY[9][(int) character] = 9;
+	}
+
+	TRANSITION_ARRAY[9]['<'] = 9;
+
+
+	/* --- S_10 --- */
+
+	for (character = 'a'; character <= 'z'; character++) {
+		TRANSITION_ARRAY[10][(int) character] = 11;
+	}
+
+	for (character = 'A'; character <= 'Z'; character++) {
+		TRANSITION_ARRAY[10][(int) character] = 11;
+	}
+
+
+	/* --- S_11 --- */
+
+	for (character = 'a'; character <= 'z'; character++) {
+		TRANSITION_ARRAY[11][(int) character] = 11;
+	}
+
+	for (character = 'A'; character <= 'Z'; character++) {
+		TRANSITION_ARRAY[11][(int) character] = 11;
+	}
+
+	for (character = '0'; character <= '9'; character++) {
+		TRANSITION_ARRAY[11][(int) character] = 11;
+	}
+
+	TRANSITION_ARRAY[11]['>'] = 9;
 }
