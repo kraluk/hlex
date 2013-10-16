@@ -36,229 +36,207 @@ void prepareTransitionArray();
 
 /* ----- MAIN ----- */
 
-int main(int argc, char** argv)
-{
-    int state = START_STATE;
-    int character = START_CHARACTER;
+int main(int argc, char** argv) {
 
-    prepareTransitionArray();
+	int state = START_STATE;
+	int character = START_CHARACTER;
 
-    printf("Wejscie: %s\n", input);
+	prepareTransitionArray();
 
-    while ((character = getCharacter()) != ERROR)
-    {
-        sprintf(txt, "%c", character);
+	printf("Wejscie: %s\n", input);
 
-        if (TRANSITION_ARRAY[state][character] != NAN)
-        {
-            if (state != TRANSITION_ARRAY[state][character])
-            {
-                if (state == STATE_ONE)
-                    addLexem(IDENTIFICATOR, buffer);
+	while ((character = getCharacter()) != ERROR) {
+		sprintf(txt, "%c", character);
 
-                if (state == STATE_TWO)
-                    addLexem(OPERATOR, buffer);
+		if (TRANSITION_ARRAY[state][character] != NAN) {
+			if (state != TRANSITION_ARRAY[state][character]) {
+				if (state == STATE_ONE)
+					addLexem(IDENTIFICATOR, buffer);
 
-                if (state == STATE_THREE)
-                    addLexem(NUMBER, buffer);
+				if (state == STATE_TWO)
+					addLexem(OPERATOR, buffer);
 
-                state = TRANSITION_ARRAY[state][character];
+				if (state == STATE_THREE)
+					addLexem(NUMBER, buffer);
 
-                strcpy(buffer, txt);
-            }
-            else
-            {
-                strcat(buffer, txt);
-            }
+				state = TRANSITION_ARRAY[state][character];
 
-            if (state == STATE_FOUR)
-                printf("\n\nZakonczono przetwarzanie frazy - znak: %s\n", buffer);
+				strcpy(buffer, txt);
+			} else {
+				strcat(buffer, txt);
+			}
 
-            if (state == STATE_FIVE)
-                printf("\n\nBlad przetwarzania - pozycja: %d, wejscie: %s\n", position, buffer);
-        }
-    }
+			if (state == STATE_FOUR)
+				printf("\n\nZakonczono przetwarzanie frazy - znak: %s\n",
+						buffer);
 
-    printf("\n");
-    //getchar();
-    return 0;
+			if (state == STATE_FIVE)
+				printf("\n\nBlad przetwarzania - pozycja: %d, wejscie: %s\n",
+						position, buffer);
+		}
+	}
+
+	printf("\n");
+	//getchar();
+	return 0;
 }
+
 
 
 /* ----- Functions ----- */
 
-void prepareTransitionArray()
-{
-    int state;
-    int charact;
+void prepareTransitionArray() {
 
-    for (state = 0; state < NUMBER_OF_STATES; state++)
-    {
-        for (charact = 0; charact < ASCII_LITERAL_MAX; charact++)
-        {
-            TRANSITION_ARRAY[state][charact] = NAN;
-        }
-    }
+	int state;
+	int charact;
 
-    char character = '\0';
+	for (state = 0; state < NUMBER_OF_STATES; state++) {
+		for (charact = 0; charact < ASCII_LITERAL_MAX; charact++) {
+			TRANSITION_ARRAY[state][charact] = NAN;
+		}
+	}
 
-    /* --- S_0 --- */
-
-    TRANSITION_ARRAY[0]['<'] = 1;
+	char character = '\0';
 
 
-    /* --- S_1 --- */
+	/* --- S_0 --- */
 
-    for (character = 'a'; character <= 'z'; character++)
-    {
-        TRANSITION_ARRAY[1][(int)character] = 2;
-    }
-
-    for (character = 'A'; character <= 'Z'; character++)
-    {
-        TRANSITION_ARRAY[1][(int)character] = 2;
-    }
-
-    TRANSITION_ARRAY[1]['/'] = 10;
+	TRANSITION_ARRAY[0]['<'] = 1;
 
 
-    /* --- S_10 --- */
+	/* --- S_1 --- */
 
-    for (character = 'a'; character <= 'z'; character++)
-    {
-        TRANSITION_ARRAY[10][(int)character] = 11;
-    }
+	for (character = 'a'; character <= 'z'; character++) {
+		TRANSITION_ARRAY[1][(int) character] = 2;
+	}
 
-    for (character = 'A'; character <= 'Z'; character++)
-    {
-        TRANSITION_ARRAY[10][(int)character] = 11;
-    }
+	for (character = 'A'; character <= 'Z'; character++) {
+		TRANSITION_ARRAY[1][(int) character] = 2;
+	}
 
-
-    /* --- S_11 --- */
-
-    for (character = 'a'; character <= 'z'; character++)
-    {
-        TRANSITION_ARRAY[11][(int)character] = 11;
-    }
-
-    for (character = 'A'; character <= 'Z'; character++)
-    {
-        TRANSITION_ARRAY[11][(int)character] = 11;
-    }
-
-    for (character = '0'; character <= '9'; character++)
-    {
-        TRANSITION_ARRAY[11][(int)character] = 11;
-    }
-
-    TRANSITION_ARRAY[11]['>'] = 9;
+	TRANSITION_ARRAY[1]['/'] = 10;
 
 
-    /* --- S_9 --- */
+	/* --- S_10 --- */
 
-    for (character = 'a'; character <= 'z'; character++)
-    {
-        TRANSITION_ARRAY[9][(int)character] = 9;
-    }
+	for (character = 'a'; character <= 'z'; character++) {
+		TRANSITION_ARRAY[10][(int) character] = 11;
+	}
 
-    for (character = 'A'; character <= 'Z'; character++)
-    {
-        TRANSITION_ARRAY[9][(int)character] = 9;
-    }
-
-    for (character = '0'; character <= '9'; character++)
-    {
-        TRANSITION_ARRAY[9][(int)character] = 9;
-    }
-
-    TRANSITION_ARRAY[9]['<'] = 9;
+	for (character = 'A'; character <= 'Z'; character++) {
+		TRANSITION_ARRAY[10][(int) character] = 11;
+	}
 
 
-    /* --- S_2 --- */
+	/* --- S_11 --- */
 
-    TRANSITION_ARRAY[2]['>'] = 9;
-    TRANSITION_ARRAY[2]['/'] = 8;
-    TRANSITION_ARRAY[2][' '] = 3;
+	for (character = 'a'; character <= 'z'; character++) {
+		TRANSITION_ARRAY[11][(int) character] = 11;
+	}
 
+	for (character = 'A'; character <= 'Z'; character++) {
+		TRANSITION_ARRAY[11][(int) character] = 11;
+	}
 
-    /* --- S_8 --- */
+	for (character = '0'; character <= '9'; character++) {
+		TRANSITION_ARRAY[11][(int) character] = 11;
+	}
 
-    TRANSITION_ARRAY[8]['>'] = 9;
-
-
-    /* --- S_3 --- */
-
-    for (character = 'a'; character <= 'z'; character++)
-    {
-        TRANSITION_ARRAY[3][(int)character] = 4;
-    }
-
-    for (character = 'A'; character <= 'Z'; character++)
-    {
-        TRANSITION_ARRAY[3][(int)character] = 4;
-    }
+	TRANSITION_ARRAY[11]['>'] = 9;
 
 
-    /* --- S_4 --- */
+	/* --- S_9 --- */
 
-    for (character = 'a'; character <= 'z'; character++)
-    {
-        TRANSITION_ARRAY[4][(int)character] = 5;
-    }
+	for (character = 'a'; character <= 'z'; character++) {
+		TRANSITION_ARRAY[9][(int) character] = 9;
+	}
 
-    for (character = 'A'; character <= 'Z'; character++)
-    {
-        TRANSITION_ARRAY[4][(int)character] = 5;
-    }
+	for (character = 'A'; character <= 'Z'; character++) {
+		TRANSITION_ARRAY[9][(int) character] = 9;
+	}
 
-    for (character = '0'; character <= '9'; character++)
-    {
-        TRANSITION_ARRAY[4][(int)character] = 5;
-    }
+	for (character = '0'; character <= '9'; character++) {
+		TRANSITION_ARRAY[9][(int) character] = 9;
+	}
 
-    TRANSITION_ARRAY[4]['='] = 5;
+	TRANSITION_ARRAY[9]['<'] = 9;
 
 
-    /* --- S_5 --- */
+	/* --- S_2 --- */
 
-    TRANSITION_ARRAY[5]['"'] = 6;
+	TRANSITION_ARRAY[2]['>'] = 9;
+	TRANSITION_ARRAY[2]['/'] = 8;
+	TRANSITION_ARRAY[2][' '] = 3;
 
 
-    /* --- S_6 --- */
+	/* --- S_8 --- */
 
-    for (character = 'a'; character <= 'z'; character++)
-    {
-        TRANSITION_ARRAY[6][(int)character] = 7;
-    }
+	TRANSITION_ARRAY[8]['>'] = 9;
 
-    for (character = 'A'; character <= 'Z'; character++)
-    {
-        TRANSITION_ARRAY[6][(int)character] = 7;
-    }
 
-    for (character = '0'; character <= '9'; character++)
-    {
-        TRANSITION_ARRAY[6][(int)character] = 7;
-    }
+	/* --- S_3 --- */
 
-    /* --- S_7 --- */
+	for (character = 'a'; character <= 'z'; character++) {
+		TRANSITION_ARRAY[3][(int) character] = 4;
+	}
 
-    TRANSITION_ARRAY[7]['"'] = 2;
+	for (character = 'A'; character <= 'Z'; character++) {
+		TRANSITION_ARRAY[3][(int) character] = 4;
+	}
+
+
+	/* --- S_4 --- */
+
+	for (character = 'a'; character <= 'z'; character++) {
+		TRANSITION_ARRAY[4][(int) character] = 5;
+	}
+
+	for (character = 'A'; character <= 'Z'; character++) {
+		TRANSITION_ARRAY[4][(int) character] = 5;
+	}
+
+	for (character = '0'; character <= '9'; character++) {
+		TRANSITION_ARRAY[4][(int) character] = 5;
+	}
+
+	TRANSITION_ARRAY[4]['='] = 5;
+
+
+	/* --- S_5 --- */
+
+	TRANSITION_ARRAY[5]['"'] = 6;
+
+
+	/* --- S_6 --- */
+
+	for (character = 'a'; character <= 'z'; character++) {
+		TRANSITION_ARRAY[6][(int) character] = 7;
+	}
+
+	for (character = 'A'; character <= 'Z'; character++) {
+		TRANSITION_ARRAY[6][(int) character] = 7;
+	}
+
+	for (character = '0'; character <= '9'; character++) {
+		TRANSITION_ARRAY[6][(int) character] = 7;
+	}
+
+
+	/* --- S_7 --- */
+
+	TRANSITION_ARRAY[7]['"'] = 2;
 }
 
-int getCharacter()
-{
-    if (position > (int)strlen(input))
-    {
-    return ERROR;
-    }
+int getCharacter() {
 
-    return input[position++];
+	if (position > (int) strlen(input)) {
+		return ERROR;
+	}
+
+	return input[position++];
 }
 
-void addLexem(const char* type, char* value)
-{
-    printf("\nWykryto leksem %-20s: %15s", type, value);
-}
+void addLexem(const char* type, char* value) {
 
+	printf("\nWykryto leksem %-20s: %15s", type, value);
+}
