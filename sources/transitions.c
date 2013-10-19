@@ -106,16 +106,18 @@ void prepareTransitionArray() {
 	/* --- S_6 --- */
 
 	for (character = 'a'; character <= 'z'; character++) {
-		TRANSITION_ARRAY[6][(int) character] = 7;
+		TRANSITION_ARRAY[6][(int) character] = 6;
 	}
 
 	for (character = 'A'; character <= 'Z'; character++) {
-		TRANSITION_ARRAY[6][(int) character] = 7;
+		TRANSITION_ARRAY[6][(int) character] = 6;
 	}
 
 	for (character = '0'; character <= '9'; character++) {
-		TRANSITION_ARRAY[6][(int) character] = 7;
+		TRANSITION_ARRAY[6][(int) character] = 6;
 	}
+
+	TRANSITION_ARRAY[6]['"'] = 2;
 
 
 	/* --- S_7 --- */
