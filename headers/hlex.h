@@ -23,6 +23,7 @@
 #define NAN               -1
 
 #define NULL_CHARACTER	  '\0'
+#define EMPTY_STRING      ""
 
 
 #endif /* HLEX_H_ */

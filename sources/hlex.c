@@ -83,13 +83,17 @@ int main(int argc, char** argv) {
 			    addLexem(PARAMETER_EQUALS, buffer);
 
 			if (((state == STATE_SIX) && (oldState != STATE_SIX)) || ((state == STATE_TWO) && (oldState == STATE_SIX))) {
-			    addLexem(PARAMETER_QUOTE, buffer); strcpy(buffer, "");}
+			    addLexem(PARAMETER_QUOTE, buffer);
+			    strcpy(buffer, EMPTY_STRING);
+			}
 
 			if ((state == STATE_EIGHT) || (state == STATE_TEN))
 			    addLexem(TAG_ENDING, buffer);
 
 			if ((state == STATE_NINE) && (oldState != STATE_NINE)) {
-			    addLexem(TAG_STOP, buffer); strcpy(buffer, ""); }
+			    addLexem(TAG_STOP, buffer);
+			    strcpy(buffer, EMPTY_STRING);
+			}
 
 			if (state == STATE_ERROR)
 				printf("\n\nBlad przetwarzania - pozycja: %d, wejscie: %s\n",
