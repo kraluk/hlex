@@ -15,6 +15,7 @@ const char* NUMBER          = "liczba";
 
 const char* TAG_START       = "poczatek tagu";
 const char* TAG_STOP        = "koniec tagu";
+const char* TAG_NAME        = "nazwa tagu";
 const char* PARAMETER       = "parametr";
 const char* PARAMETER_VALUE = "wartosc parametru";
 
