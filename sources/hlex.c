@@ -49,13 +49,13 @@ int main(int argc, char** argv) {
 		if (TRANSITION_ARRAY[state][character] != NAN) {
 			if (state != TRANSITION_ARRAY[state][character]) {
 				if (state == STATE_ONE)
-					addLexem(IDENTIFICATOR, buffer);
+					addLexem(TAG_START, buffer);
 
 				if (state == STATE_TWO)
-					addLexem(OPERATOR, buffer);
+					addLexem(TAG_NAME, buffer);
 
-				if (state == STATE_THREE)
-					addLexem(NUMBER, buffer);
+				if (state == STATE_NINE)
+					addLexem(TAG_STOP, buffer);
 
 				state = TRANSITION_ARRAY[state][character];
 
