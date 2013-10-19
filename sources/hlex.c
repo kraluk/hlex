@@ -18,7 +18,7 @@
 
 /* ----- Global Variables ----- */
 
-char input[INPUT_MAX] = "<html param=\"val\"><body param2=\"val2\" param3=\"val3\">test</body>tee</html>";
+char input[INPUT_MAX] = "<html param=\"val\">\n\t<body param2=\"val2\" param3=\"val3\">test</body>\n\ttee\n\t<test/>\n\t<test2 param4=\"val4\"/>\n</html>";
 char buffer[BUFFER_MAX];
 char txt[TXT_MAX];
 
@@ -42,7 +42,7 @@ int main(int argc, char** argv) {
 
 	prepareTransitionArray();
 
-	printf("Wejscie: %s (%d)\n", input, (int) strlen(input));
+	printf("Wejscie: \n%s \n(%d)\n", input, (int) strlen(input));
 
 	while ((character = getCharacter()) != ERROR) {
 		sprintf(txt, "%c", character);
@@ -50,8 +50,9 @@ int main(int argc, char** argv) {
 		if (TRANSITION_ARRAY[state][character] != NAN) {
 			if (state != TRANSITION_ARRAY[state][character]) {
 
-			    if (((state == STATE_TWO) && (oldState == STATE_TWO)) || ((state == STATE_ELEVEN) && (oldState == STATE_ELEVEN)))
-					addLexem(TAG_NAME, buffer);
+                if (((state == STATE_TWO) && (oldState == STATE_TWO))
+                        || ((state == STATE_ELEVEN) && (oldState == STATE_ELEVEN)))
+                    addLexem(TAG_NAME, buffer);
 
 				if (state == STATE_FOUR)
 				    addLexem(PARAMETER, buffer);
@@ -82,7 +83,8 @@ int main(int argc, char** argv) {
 			if (state == STATE_FIVE)
 			    addLexem(PARAMETER_EQUALS, buffer);
 
-			if (((state == STATE_SIX) && (oldState != STATE_SIX)) || ((state == STATE_TWO) && (oldState == STATE_SIX))) {
+			if (((state == STATE_SIX) && (oldState != STATE_SIX))
+			        || ((state == STATE_TWO) && (oldState == STATE_SIX))) {
 			    addLexem(PARAMETER_QUOTE, buffer);
 			    strcpy(buffer, EMPTY_STRING);
 			}
