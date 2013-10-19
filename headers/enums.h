@@ -15,7 +15,13 @@ enum {
     STATE_TWO,
     STATE_THREE,
     STATE_FOUR,
-    STATE_FIVE
+    STATE_FIVE,
+    STATE_SIX,
+    STATE_SEVEN,
+    STATE_EIGHT,
+    STATE_NINE,
+    STATE_TEN,
+    STATE_ELEVEN
 };
 
 
