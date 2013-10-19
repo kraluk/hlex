@@ -84,15 +84,15 @@ void prepareTransitionArray() {
 	/* --- S_4 --- */
 
 	for (character = 'a'; character <= 'z'; character++) {
-		TRANSITION_ARRAY[4][(int) character] = 5;
+		TRANSITION_ARRAY[4][(int) character] = 4;
 	}
 
 	for (character = 'A'; character <= 'Z'; character++) {
-		TRANSITION_ARRAY[4][(int) character] = 5;
+		TRANSITION_ARRAY[4][(int) character] = 4;
 	}
 
 	for (character = '0'; character <= '9'; character++) {
-		TRANSITION_ARRAY[4][(int) character] = 5;
+		TRANSITION_ARRAY[4][(int) character] = 4;
 	}
 
 	TRANSITION_ARRAY[4]['='] = 5;
@@ -142,7 +142,7 @@ void prepareTransitionArray() {
 		TRANSITION_ARRAY[9][(int) character] = 9;
 	}
 
-	TRANSITION_ARRAY[9]['<'] = 9;
+	TRANSITION_ARRAY[9]['<'] = 1;
 
 
 	/* --- S_10 --- */
