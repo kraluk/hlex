@@ -57,6 +57,18 @@ void prepareTransitionArray() {
 	TRANSITION_ARRAY[2]['/'] = 8;
 	TRANSITION_ARRAY[2][' '] = 3;
 
+	for (character = 'a'; character <= 'z'; character++) {
+        TRANSITION_ARRAY[2][(int) character] = 2;
+    }
+
+    for (character = 'A'; character <= 'Z'; character++) {
+        TRANSITION_ARRAY[2][(int) character] = 2;
+    }
+
+    for (character = '0'; character <= '9'; character++) {
+        TRANSITION_ARRAY[2][(int) character] = 2;
+    }
+
 
 	/* --- S_3 --- */
 
