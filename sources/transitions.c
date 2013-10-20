@@ -22,8 +22,6 @@ void prepareTransitionArray() {
 	int state   = NAN;
 	int charact = NAN;
 
-	char character = NULL_CHARACTER;
-
 
 	/* --- "Clearing" the array --- */
 
@@ -44,30 +42,17 @@ void prepareTransitionArray() {
 	TRANSITION_ARRAY[0]['/'] = STATE_ERROR;
 	TRANSITION_ARRAY[0]['='] = STATE_ERROR;
 
-	for (character = 'a'; character <= 'z'; character++) {
-        TRANSITION_ARRAY[0][(int) character] = STATE_ERROR;
-    }
-
-    for (character = 'A'; character <= 'Z'; character++) {
-        TRANSITION_ARRAY[0][(int) character] = STATE_ERROR;
-    }
-
-    for (character = '0'; character <= '9'; character++) {
-        TRANSITION_ARRAY[0][(int) character] = STATE_ERROR;
-    }
+	setSmallCharactersAsError(0);
+	setGreatCharactersAsError(0);
+	setNumbersAsError(0);
 
 
 	/* --- S_1 --- */
 
 	TRANSITION_ARRAY[1]['/'] = 10;
 
-	for (character = 'a'; character <= 'z'; character++) {
-		TRANSITION_ARRAY[1][(int) character] = 2;
-	}
-
-	for (character = 'A'; character <= 'Z'; character++) {
-		TRANSITION_ARRAY[1][(int) character] = 2;
-	}
+	setSmallCharactersAsState(1, 2);
+	setGreatCharactersAsState(1, 2);
 
 
 	TRANSITION_ARRAY[1]['<'] = STATE_ERROR;
@@ -75,9 +60,7 @@ void prepareTransitionArray() {
     TRANSITION_ARRAY[1]['"'] = STATE_ERROR;
     TRANSITION_ARRAY[1]['='] = STATE_ERROR;
 
-    for (character = '0'; character <= '9'; character++) {
-        TRANSITION_ARRAY[1][(int) character] = STATE_ERROR;
-    }
+    setNumbersAsError(1);
 
 
 	/* --- S_2 --- */
@@ -86,17 +69,9 @@ void prepareTransitionArray() {
 	TRANSITION_ARRAY[2]['/'] = 8;
 	TRANSITION_ARRAY[2][' '] = 3;
 
-	for (character = 'a'; character <= 'z'; character++) {
-        TRANSITION_ARRAY[2][(int) character] = 2;
-    }
-
-    for (character = 'A'; character <= 'Z'; character++) {
-        TRANSITION_ARRAY[2][(int) character] = 2;
-    }
-
-    for (character = '0'; character <= '9'; character++) {
-        TRANSITION_ARRAY[2][(int) character] = 2;
-    }
+    setSmallCharactersAsState(2, 2);
+    setGreatCharactersAsState(2, 2);
+    setNumbersAsState(2, 2);
 
 
     TRANSITION_ARRAY[2]['<'] = STATE_ERROR;
@@ -106,13 +81,8 @@ void prepareTransitionArray() {
 
 	/* --- S_3 --- */
 
-	for (character = 'a'; character <= 'z'; character++) {
-		TRANSITION_ARRAY[3][(int) character] = 4;
-	}
-
-	for (character = 'A'; character <= 'Z'; character++) {
-		TRANSITION_ARRAY[3][(int) character] = 4;
-	}
+    setSmallCharactersAsState(3, 4);
+    setGreatCharactersAsState(3, 4);
 
 
 	TRANSITION_ARRAY[3]['<'] = STATE_ERROR;
@@ -121,26 +91,16 @@ void prepareTransitionArray() {
     TRANSITION_ARRAY[3]['/'] = STATE_ERROR;
     TRANSITION_ARRAY[3]['='] = STATE_ERROR;
 
-    for (character = '0'; character <= '9'; character++) {
-        TRANSITION_ARRAY[3][(int) character] = STATE_ERROR;
-    }
+    setNumbersAsError(3);
 
 
 	/* --- S_4 --- */
 
 	TRANSITION_ARRAY[4]['='] = 5;
 
-	for (character = 'a'; character <= 'z'; character++) {
-		TRANSITION_ARRAY[4][(int) character] = 4;
-	}
-
-	for (character = 'A'; character <= 'Z'; character++) {
-		TRANSITION_ARRAY[4][(int) character] = 4;
-	}
-
-	for (character = '0'; character <= '9'; character++) {
-		TRANSITION_ARRAY[4][(int) character] = 4;
-	}
+    setSmallCharactersAsState(4, 4);
+    setGreatCharactersAsState(4, 4);
+    setNumbersAsState(4, 4);
 
 
     TRANSITION_ARRAY[4]['<'] = STATE_ERROR;
@@ -159,34 +119,18 @@ void prepareTransitionArray() {
     TRANSITION_ARRAY[5]['/'] = STATE_ERROR;
     TRANSITION_ARRAY[5]['='] = STATE_ERROR;
 
-    for (character = 'a'; character <= 'z'; character++) {
-        TRANSITION_ARRAY[5][(int) character] = STATE_ERROR;
-    }
-
-    for (character = 'A'; character <= 'Z'; character++) {
-        TRANSITION_ARRAY[5][(int) character] = STATE_ERROR;
-    }
-
-    for (character = '0'; character <= '9'; character++) {
-        TRANSITION_ARRAY[5][(int) character] = STATE_ERROR;
-    }
+    setSmallCharactersAsError(5);
+    setGreatCharactersAsError(5);
+    setNumbersAsError(5);
 
 
 	/* --- S_6 --- */
 
 	TRANSITION_ARRAY[6]['"'] = 7;
 
-	for (character = 'a'; character <= 'z'; character++) {
-		TRANSITION_ARRAY[6][(int) character] = 6;
-	}
-
-	for (character = 'A'; character <= 'Z'; character++) {
-		TRANSITION_ARRAY[6][(int) character] = 6;
-	}
-
-	for (character = '0'; character <= '9'; character++) {
-		TRANSITION_ARRAY[6][(int) character] = 6;
-	}
+    setSmallCharactersAsState(6, 6);
+    setGreatCharactersAsState(6, 6);
+    setNumbersAsState(6, 6);
 
 
 	TRANSITION_ARRAY[6]['<'] = STATE_ERROR;
@@ -206,17 +150,9 @@ void prepareTransitionArray() {
     TRANSITION_ARRAY[7]['"'] = STATE_ERROR;
     TRANSITION_ARRAY[7]['='] = STATE_ERROR;
 
-    for (character = 'a'; character <= 'z'; character++) {
-        TRANSITION_ARRAY[7][(int) character] = STATE_ERROR;
-    }
-
-    for (character = 'A'; character <= 'Z'; character++) {
-        TRANSITION_ARRAY[7][(int) character] = STATE_ERROR;
-    }
-
-    for (character = '0'; character <= '9'; character++) {
-        TRANSITION_ARRAY[7][(int) character] = STATE_ERROR;
-    }
+    setSmallCharactersAsError(7);
+    setGreatCharactersAsError(7);
+    setNumbersAsError(7);
 
 
 	/* --- S_8 --- */
@@ -229,34 +165,18 @@ void prepareTransitionArray() {
     TRANSITION_ARRAY[8]['/'] = STATE_ERROR;
     TRANSITION_ARRAY[8]['='] = STATE_ERROR;
 
-    for (character = 'a'; character <= 'z'; character++) {
-        TRANSITION_ARRAY[8][(int) character] = STATE_ERROR;
-    }
-
-    for (character = 'A'; character <= 'Z'; character++) {
-        TRANSITION_ARRAY[8][(int) character] = STATE_ERROR;
-    }
-
-    for (character = '0'; character <= '9'; character++) {
-        TRANSITION_ARRAY[8][(int) character] = STATE_ERROR;
-    }
+    setSmallCharactersAsError(8);
+    setGreatCharactersAsError(8);
+    setNumbersAsError(8);
 
 
 	/* --- S_9 --- */
 
 	TRANSITION_ARRAY[9]['<'] = 1;
 
-	for (character = 'a'; character <= 'z'; character++) {
-		TRANSITION_ARRAY[9][(int) character] = 9;
-	}
-
-	for (character = 'A'; character <= 'Z'; character++) {
-		TRANSITION_ARRAY[9][(int) character] = 9;
-	}
-
-	for (character = '0'; character <= '9'; character++) {
-		TRANSITION_ARRAY[9][(int) character] = 9;
-	}
+    setSmallCharactersAsState(9, 9);
+    setGreatCharactersAsState(9, 9);
+    setNumbersAsState(9, 9);
 
 
     TRANSITION_ARRAY[9]['>'] = STATE_ERROR;
@@ -267,13 +187,8 @@ void prepareTransitionArray() {
 
 	/* --- S_10 --- */
 
-	for (character = 'a'; character <= 'z'; character++) {
-		TRANSITION_ARRAY[10][(int) character] = 11;
-	}
-
-	for (character = 'A'; character <= 'Z'; character++) {
-		TRANSITION_ARRAY[10][(int) character] = 11;
-	}
+    setSmallCharactersAsState(10, 11);
+    setGreatCharactersAsState(10, 11);
 
 
 	TRANSITION_ARRAY[10]['<'] = STATE_ERROR;
@@ -282,30 +197,63 @@ void prepareTransitionArray() {
     TRANSITION_ARRAY[10]['/'] = STATE_ERROR;
     TRANSITION_ARRAY[10]['='] = STATE_ERROR;
 
-    for (character = '0'; character <= '9'; character++) {
-        TRANSITION_ARRAY[10][(int) character] = STATE_ERROR;
-    }
+    setNumbersAsError(10);
 
 
 	/* --- S_11 --- */
 
 	TRANSITION_ARRAY[11]['>'] = 9;
 
-	for (character = 'a'; character <= 'z'; character++) {
-		TRANSITION_ARRAY[11][(int) character] = 11;
-	}
-
-	for (character = 'A'; character <= 'Z'; character++) {
-		TRANSITION_ARRAY[11][(int) character] = 11;
-	}
-
-	for (character = '0'; character <= '9'; character++) {
-		TRANSITION_ARRAY[11][(int) character] = 11;
-	}
+    setSmallCharactersAsState(11, 11);
+    setGreatCharactersAsState(11, 11);
+    setNumbersAsState(11, 11);
 
 
     TRANSITION_ARRAY[11]['<'] = STATE_ERROR;
     TRANSITION_ARRAY[11]['"'] = STATE_ERROR;
     TRANSITION_ARRAY[11]['/'] = STATE_ERROR;
     TRANSITION_ARRAY[11]['='] = STATE_ERROR;
+}
+
+
+void setSmallCharactersAsError(int state) {
+
+    setSmallCharactersAsState(state, STATE_ERROR);
+}
+
+void setGreatCharactersAsError(int state) {
+
+    setGreatCharactersAsState(state, STATE_ERROR);
+}
+
+void setNumbersAsError(int state) {
+
+    setNumbersAsState(state, STATE_ERROR);
+}
+
+void setSmallCharactersAsState(int inState, int outState) {
+
+    char character = NULL_CHARACTER;
+
+    for (character = 'a'; character <= 'z'; character++) {
+        TRANSITION_ARRAY[inState][(int) character] = outState;
+    }
+}
+
+void setGreatCharactersAsState(int inState, int outState) {
+
+    char character = NULL_CHARACTER;
+
+    for (character = 'A'; character <= 'Z'; character++) {
+        TRANSITION_ARRAY[inState][(int) character] = outState;
+    }
+}
+
+void setNumbersAsState(int inState, int outState) {
+
+    char character = NULL_CHARACTER;
+
+    for (character = '0'; character <= '9'; character++) {
+        TRANSITION_ARRAY[inState][(int) character] = outState;
+    }
 }

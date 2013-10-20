@@ -18,4 +18,13 @@ extern int TRANSITION_ARRAY[NUMBER_OF_STATES][ASCII_LITERAL_MAX];
 
 void prepareTransitionArray();
 
+void setSmallCharactersAsError(int state);
+void setGreatCharactersAsError(int state);
+void setNumbersAsError(int state);
+
+void setSmallCharactersAsState(int inState, int outState);
+void setGreatCharactersAsState(int inState, int outState);
+void setNumbersAsState(int inState, int outState);
+
+
 #endif /* TRANSITIONS_H_ */

@@ -112,7 +112,11 @@ int main(int argc, char** argv) {
         printf("\n\nBlad przetwarzania - pozycja: %d, wejscie: %s\n", position,
                 buffer);
     } else {
-        printf("\n\nKoniec przetwarzania...");
+
+        if ((state == STATE_NINE) && (oldState == STATE_NINE))
+            addLexem(TEXT, buffer);
+        else
+            printf("\n\nKoniec przetwarzania...");
     }
 
 	//getchar();
