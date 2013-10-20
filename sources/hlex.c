@@ -19,6 +19,7 @@
 /* ----- Global Variables ----- */
 
 char input[INPUT_MAX] = "<html param=\"val\">\n\t<body param2=\"val2\" param3=\"val3\">test</body>\n\ttee\n\t<test/>\n\t<test2 param4=\"val4\"/>\n</html>";
+//char input[INPUT_MAX] = "<99></99>";
 char buffer[BUFFER_MAX];
 char txt[TXT_MAX];
 
@@ -51,7 +52,7 @@ int main(int argc, char** argv) {
 			if (state != TRANSITION_ARRAY[state][character]) {
 
                 if (((state == STATE_TWO) && (oldState == STATE_TWO))
-                        || ((state == STATE_ELEVEN) && (oldState == STATE_ELEVEN)))
+                        || ((state == STATE_TEN) && (oldState == STATE_TEN)))
                     addLexem(TAG_NAME, buffer);
 
 				if (state == STATE_FOUR)
@@ -60,7 +61,7 @@ int main(int argc, char** argv) {
 				if (state == STATE_SIX)
 				    addLexem(PARAMETER_VALUE, buffer);
 
-                if ((state == STATE_NINE) && (oldState == STATE_NINE))
+                if ((state == STATE_EIGHT) && (oldState == STATE_EIGHT))
                     addLexem(TEXT, buffer);
 
 				oldState = state;
@@ -89,17 +90,21 @@ int main(int argc, char** argv) {
 			    strcpy(buffer, EMPTY_STRING);
 			}
 
-			if ((state == STATE_EIGHT) || (state == STATE_TEN))
+			if ((state == STATE_SEVEN) || (state == STATE_TEN)) {
 			    addLexem(TAG_ENDING, buffer);
-
-			if ((state == STATE_NINE) && (oldState != STATE_NINE)) {
-			    addLexem(TAG_STOP, buffer);
 			    strcpy(buffer, EMPTY_STRING);
 			}
 
-			if (state == STATE_ERROR)
+			if ((state == STATE_TEN) && (oldState != STATE_TEN)) {
+			    addLexem(TAG_STOP, buffer);
+			    //strcpy(buffer, EMPTY_STRING);
+			}
+
+			if (state == STATE_ERROR) {
 				printf("\n\nBlad przetwarzania - pozycja: %d, wejscie: %s\n",
 						position, buffer);
+				exit(-1);
+			}
 
 			//printf("\n__DEBUG [states]: (%d)(%d)\n", oldState, state);
 			//printf("\n__DEBUG [buffers]: (%s)(%s)\n", buffer, txt);

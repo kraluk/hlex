@@ -21,7 +21,6 @@ enum {
     STATE_EIGHT,
     STATE_NINE,
     STATE_TEN,
-    STATE_ELEVEN,
     STATE_ERROR = 99
 };
 

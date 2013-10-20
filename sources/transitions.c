@@ -6,6 +6,7 @@
  */
 
 #include "hlex.h"
+#include "enums.h"
 #include "transitions.h"
 
 
@@ -38,7 +39,27 @@ void prepareTransitionArray() {
 	TRANSITION_ARRAY[0]['<'] = 1;
 
 
+	TRANSITION_ARRAY[0]['>'] = STATE_ERROR;
+    TRANSITION_ARRAY[0]['/'] = STATE_ERROR;
+    TRANSITION_ARRAY[0]['"'] = STATE_ERROR;
+    TRANSITION_ARRAY[0]['='] = STATE_ERROR;
+
+	for (character = 'a'; character <= 'z'; character++) {
+        TRANSITION_ARRAY[0][(int) character] = STATE_ERROR;
+    }
+
+    for (character = 'A'; character <= 'Z'; character++) {
+        TRANSITION_ARRAY[0][(int) character] = STATE_ERROR;
+    }
+
+    for (character = '0'; character <= '9'; character++) {
+        TRANSITION_ARRAY[0][(int) character] = STATE_ERROR;
+    }
+
+
 	/* --- S_1 --- */
+
+    TRANSITION_ARRAY[1]['/'] = 10;
 
 	for (character = 'a'; character <= 'z'; character++) {
 		TRANSITION_ARRAY[1][(int) character] = 2;
@@ -48,13 +69,21 @@ void prepareTransitionArray() {
 		TRANSITION_ARRAY[1][(int) character] = 2;
 	}
 
-	TRANSITION_ARRAY[1]['/'] = 10;
+
+	TRANSITION_ARRAY[1]['<'] = STATE_ERROR;
+	TRANSITION_ARRAY[1]['>'] = STATE_ERROR;
+    TRANSITION_ARRAY[1]['"'] = STATE_ERROR;
+    TRANSITION_ARRAY[1]['='] = STATE_ERROR;
+
+    for (character = '0'; character <= '9'; character++) {
+        TRANSITION_ARRAY[1][(int) character] = STATE_ERROR;
+    }
 
 
 	/* --- S_2 --- */
 
-	TRANSITION_ARRAY[2]['>'] = 9;
-	TRANSITION_ARRAY[2]['/'] = 8;
+	TRANSITION_ARRAY[2]['>'] = 8;
+	TRANSITION_ARRAY[2]['/'] = 7;
 	TRANSITION_ARRAY[2][' '] = 3;
 
 	for (character = 'a'; character <= 'z'; character++) {
@@ -70,6 +99,11 @@ void prepareTransitionArray() {
     }
 
 
+    TRANSITION_ARRAY[2]['<'] = STATE_ERROR;
+    TRANSITION_ARRAY[2]['"'] = STATE_ERROR;
+    TRANSITION_ARRAY[2]['='] = STATE_ERROR;
+
+
 	/* --- S_3 --- */
 
 	for (character = 'a'; character <= 'z'; character++) {
@@ -81,7 +115,20 @@ void prepareTransitionArray() {
 	}
 
 
+	TRANSITION_ARRAY[3]['<'] = STATE_ERROR;
+    TRANSITION_ARRAY[3]['>'] = STATE_ERROR;
+    TRANSITION_ARRAY[3]['/'] = STATE_ERROR;
+    TRANSITION_ARRAY[3]['"'] = STATE_ERROR;
+    TRANSITION_ARRAY[3]['='] = STATE_ERROR;
+
+    for (character = '0'; character <= '9'; character++) {
+        TRANSITION_ARRAY[3][(int) character] = STATE_ERROR;
+    }
+
+
 	/* --- S_4 --- */
+
+    TRANSITION_ARRAY[4]['='] = 5;
 
 	for (character = 'a'; character <= 'z'; character++) {
 		TRANSITION_ARRAY[4][(int) character] = 4;
@@ -95,7 +142,12 @@ void prepareTransitionArray() {
 		TRANSITION_ARRAY[4][(int) character] = 4;
 	}
 
-	TRANSITION_ARRAY[4]['='] = 5;
+
+    TRANSITION_ARRAY[4]['<'] = STATE_ERROR;
+    TRANSITION_ARRAY[4]['>'] = STATE_ERROR;
+    TRANSITION_ARRAY[4]['/'] = STATE_ERROR;
+    TRANSITION_ARRAY[4]['"'] = STATE_ERROR;
+
 
 
 	/* --- S_5 --- */
@@ -103,7 +155,26 @@ void prepareTransitionArray() {
 	TRANSITION_ARRAY[5]['"'] = 6;
 
 
+	TRANSITION_ARRAY[5]['<'] = STATE_ERROR;
+    TRANSITION_ARRAY[5]['>'] = STATE_ERROR;
+    TRANSITION_ARRAY[5]['/'] = STATE_ERROR;
+
+    for (character = 'a'; character <= 'z'; character++) {
+        TRANSITION_ARRAY[5][(int) character] = STATE_ERROR;
+    }
+
+    for (character = 'A'; character <= 'Z'; character++) {
+        TRANSITION_ARRAY[5][(int) character] = STATE_ERROR;
+    }
+
+    for (character = '0'; character <= '9'; character++) {
+        TRANSITION_ARRAY[5][(int) character] = STATE_ERROR;
+    }
+
+
 	/* --- S_6 --- */
+
+    TRANSITION_ARRAY[6]['"'] = 2;
 
 	for (character = 'a'; character <= 'z'; character++) {
 		TRANSITION_ARRAY[6][(int) character] = 6;
@@ -117,60 +188,84 @@ void prepareTransitionArray() {
 		TRANSITION_ARRAY[6][(int) character] = 6;
 	}
 
-	TRANSITION_ARRAY[6]['"'] = 2;
+
+	TRANSITION_ARRAY[6]['<'] = STATE_ERROR;
+    TRANSITION_ARRAY[6]['>'] = STATE_ERROR;
+    TRANSITION_ARRAY[6]['/'] = STATE_ERROR;
 
 
 	/* --- S_7 --- */
 
-	TRANSITION_ARRAY[7]['"'] = 2;
+	TRANSITION_ARRAY[7]['/'] = 8;
+
+
+	TRANSITION_ARRAY[7]['<'] = STATE_ERROR;
+    TRANSITION_ARRAY[7]['>'] = STATE_ERROR;
+    TRANSITION_ARRAY[7]['/'] = STATE_ERROR;
+    TRANSITION_ARRAY[7]['"'] = STATE_ERROR;
+    TRANSITION_ARRAY[7]['='] = STATE_ERROR;
+
+    for (character = 'a'; character <= 'z'; character++) {
+        TRANSITION_ARRAY[7][(int) character] = STATE_ERROR;
+    }
+
+    for (character = 'A'; character <= 'Z'; character++) {
+        TRANSITION_ARRAY[7][(int) character] = STATE_ERROR;
+    }
+
+    for (character = '0'; character <= '9'; character++) {
+        TRANSITION_ARRAY[7][(int) character] = STATE_ERROR;
+    }
 
 
 	/* --- S_8 --- */
 
-	TRANSITION_ARRAY[8]['>'] = 9;
+    TRANSITION_ARRAY[8]['<'] = 1;
+
+	for (character = 'a'; character <= 'z'; character++) {
+		TRANSITION_ARRAY[8][(int) character] = 8;
+	}
+
+	for (character = 'A'; character <= 'Z'; character++) {
+		TRANSITION_ARRAY[8][(int) character] = 8;
+	}
+
+	for (character = '0'; character <= '9'; character++) {
+		TRANSITION_ARRAY[8][(int) character] = 8;
+	}
+
+
+	TRANSITION_ARRAY[8]['/'] = STATE_ERROR;
+    TRANSITION_ARRAY[8]['>'] = STATE_ERROR;
+    TRANSITION_ARRAY[8]['/'] = STATE_ERROR;
+    TRANSITION_ARRAY[8]['"'] = STATE_ERROR;
+    TRANSITION_ARRAY[8]['='] = STATE_ERROR;
 
 
 	/* --- S_9 --- */
 
 	for (character = 'a'; character <= 'z'; character++) {
-		TRANSITION_ARRAY[9][(int) character] = 9;
+		TRANSITION_ARRAY[9][(int) character] = 10;
 	}
 
 	for (character = 'A'; character <= 'Z'; character++) {
-		TRANSITION_ARRAY[9][(int) character] = 9;
+		TRANSITION_ARRAY[9][(int) character] = 10;
 	}
-
-	for (character = '0'; character <= '9'; character++) {
-		TRANSITION_ARRAY[9][(int) character] = 9;
-	}
-
-	TRANSITION_ARRAY[9]['<'] = 1;
 
 
 	/* --- S_10 --- */
 
+	TRANSITION_ARRAY[10]['>'] = 8;
+
 	for (character = 'a'; character <= 'z'; character++) {
-		TRANSITION_ARRAY[10][(int) character] = 11;
+		TRANSITION_ARRAY[10][(int) character] = 10;
 	}
 
 	for (character = 'A'; character <= 'Z'; character++) {
-		TRANSITION_ARRAY[10][(int) character] = 11;
-	}
-
-
-	/* --- S_11 --- */
-
-	for (character = 'a'; character <= 'z'; character++) {
-		TRANSITION_ARRAY[11][(int) character] = 11;
-	}
-
-	for (character = 'A'; character <= 'Z'; character++) {
-		TRANSITION_ARRAY[11][(int) character] = 11;
+		TRANSITION_ARRAY[10][(int) character] = 10;
 	}
 
 	for (character = '0'; character <= '9'; character++) {
-		TRANSITION_ARRAY[11][(int) character] = 11;
+		TRANSITION_ARRAY[10][(int) character] = 10;
 	}
-
-	TRANSITION_ARRAY[11]['>'] = 9;
 }
