@@ -1,5 +1,5 @@
 TARGET = hlex
-LIBS = -lm -lnetpbm
+LIBS = -lm
 CC = mpicc
 CFLAGS = -g -Wall
 
