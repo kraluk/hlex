@@ -122,7 +122,7 @@ void prepareTransitionArray() {
 
 	/* --- S_7 --- */
 
-	TRANSITION_ARRAY[7]['"'] = 2;
+	//TRANSITION_ARRAY[7]['"'] = 2;
 
 
 	/* --- S_8 --- */
