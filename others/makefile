@@ -1,6 +1,6 @@
 TARGET = hlex
 LIBS = -lm
-CC = mpicc
+CC = gcc
 CFLAGS = -g -Wall
 
 .PHONY: clean all default
