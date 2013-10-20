@@ -83,8 +83,8 @@ int main(int argc, char** argv) {
 			if (state == STATE_FIVE)
 			    addLexem(PARAMETER_EQUALS, buffer);
 
-			if (((state == STATE_SIX) && (oldState != STATE_SIX))
-			        || ((state == STATE_TWO) && (oldState == STATE_SIX))) {
+			if (((state == STATE_SIX) && (oldState == STATE_FIVE))
+			        || ((state == STATE_SEVEN) && (oldState == STATE_SIX))) {
 			    addLexem(PARAMETER_QUOTE, buffer);
 			    strcpy(buffer, EMPTY_STRING);
 			}
@@ -97,16 +97,24 @@ int main(int argc, char** argv) {
 			    strcpy(buffer, EMPTY_STRING);
 			}
 
-			if (state == STATE_ERROR)
+			if (state == STATE_ERROR) {
 				printf("\n\nBlad przetwarzania - pozycja: %d, wejscie: %s\n",
 						position, buffer);
+				exit(-1);
+			}
 
 			//printf("\n__DEBUG [states]: (%d)(%d)\n", oldState, state);
 			//printf("\n__DEBUG [buffers]: (%s)(%s)\n", buffer, txt);
 		}
 	}
 
-	printf("\n\nKoniec...");
+    if (state != STATE_NINE) {
+        printf("\n\nBlad przetwarzania - pozycja: %d, wejscie: %s\n", position,
+                buffer);
+    } else {
+        printf("\n\nKoniec przetwarzania...");
+    }
+
 	//getchar();
 	return 0;
 }
